@@ -1,5 +1,6 @@
 import Logo from "@/components/partials/Logo";
 import ThemeSwitcher from "@/components/partials/ThemeSwitcher";
+import { UserButton } from "@clerk/nextjs";
 
 function Navbar() {
   return (
@@ -7,6 +8,7 @@ function Navbar() {
       <Logo />
       <div className="flex gap-4 items-center">
         <ThemeSwitcher />
+        <UserButton />
       </div>
     </nav>
   );
