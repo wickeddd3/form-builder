@@ -20,8 +20,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { ImSpinner2 } from "react-icons/im";
 import { toast } from "@/hooks/use-toast";
 import { createForm } from "@/actions/form";
+import { useRouter } from "next/navigation";
 
 function CreateForm() {
+  const router = useRouter();
+
   const form = useForm<CreateFormValues>({
     resolver: zodResolver(createFormSchema),
     defaultValues: {
@@ -38,11 +41,12 @@ function CreateForm() {
 
   async function onSubmit(values: CreateFormValues) {
     try {
-      await createForm(values);
+      const formId = await createForm(values);
       toast({
         title: "Success",
         description: "Form created successfully",
       });
+      router.push(`/builder/${formId}`);
     } catch (error) {
       toast({
         title: "Error",
