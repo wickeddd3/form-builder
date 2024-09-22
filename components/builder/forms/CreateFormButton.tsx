@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import CreateForm from "@/components/builder/forms/CreateForm";
 
 function CreateFormButton() {
   return (
@@ -23,6 +24,7 @@ function CreateFormButton() {
             Create a new form to start collecting responses
           </DialogDescription>
         </DialogHeader>
+        <CreateForm />
       </DialogContent>
     </Dialog>
   );
