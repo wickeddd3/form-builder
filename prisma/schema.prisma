@@ -28,6 +28,7 @@ model Form {
   formSubmissions   FormSubmission[]
 
   @@map("forms")
+  @@unique([name, userId])
 }
 
 model FormSubmission {
