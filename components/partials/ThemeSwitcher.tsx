@@ -1,11 +1,19 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LuMonitor, LuMoonStar, LuSunDim, LuSunMedium } from "react-icons/lu";
 
 function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null; // avoid rehydration errors
 
   return (
     <Tabs defaultValue={theme}>
