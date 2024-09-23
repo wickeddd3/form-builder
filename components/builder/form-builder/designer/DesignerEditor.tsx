@@ -1,4 +1,4 @@
-import { useDroppable } from "@dnd-kit/core";
+import { DragEndEvent, useDndMonitor, useDroppable } from "@dnd-kit/core";
 import { RiDragDropLine } from "react-icons/ri";
 
 function DesignerEditor() {
@@ -6,6 +6,12 @@ function DesignerEditor() {
     id: "designer-editor-drop-area",
     data: {
       isDesignerDropArea: true,
+    },
+  });
+
+  useDndMonitor({
+    onDragEnd: (event: DragEndEvent) => {
+      console.log(event);
     },
   });
 
