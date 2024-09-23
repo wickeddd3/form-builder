@@ -1,6 +1,7 @@
+import { DndContext } from "@dnd-kit/core";
 import DesignerEditor from "@/components/builder/form-builder/designer/DesignerEditor";
 import DesignerSidebar from "@/components/builder/form-builder/designer/DesignerSidebar";
-import { DndContext } from "@dnd-kit/core";
+import DesignerDragOverlay from "@/components/builder/form-builder/designer/DesignerDragOverlay";
 
 function Designer() {
   return (
@@ -11,6 +12,7 @@ function Designer() {
           <DesignerSidebar />
         </div>
       </div>
+      <DesignerDragOverlay />
     </DndContext>
   );
 }
