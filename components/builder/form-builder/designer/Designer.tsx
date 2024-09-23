@@ -1,5 +1,5 @@
-import DesignerEditor from "./DesignerEditor";
-import DesignerSidebar from "./DesignerSidebar";
+import DesignerEditor from "@/components/builder/form-builder/designer/DesignerEditor";
+import DesignerSidebar from "@/components/builder/form-builder/designer/DesignerSidebar";
 
 function Designer() {
   return (
