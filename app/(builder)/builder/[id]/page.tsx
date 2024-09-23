@@ -1,5 +1,5 @@
 import { getFormById } from "@/actions/form";
-import FormBuilder from "@/components/builder/FormBuilder";
+import FormBuilder from "@/components/builder/form-builder/FormBuilder";
 
 async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
