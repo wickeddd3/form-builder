@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import ErrorSvg from "@/assets/illustrations/error.svg";
+import ErrorSvg from "@/public/illustrations/error.svg";
 
 function Error() {
   return (
