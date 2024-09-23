@@ -2,16 +2,16 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useEffect } from "react";
+import Image from "next/image";
+import ErrorSvg from "@/assets/illustrations/error.svg";
 
-function Error({ error }: { error: Error }) {
-  useEffect(() => {
-    console.error(error);
-  }, [error]);
-
+function Error() {
   return (
     <div className="flex w-full h-full flex-col items-center justify-center gap-4">
-      <h2 className="text-destructive text-4xl">Something went wrong!</h2>
+      <Image src={ErrorSvg} width={200} height={200} alt="Error" />
+      <h2 className="text-red-600 py-4 text-center text-2xl md:text-4xl font-bold">
+        Something went wrong!
+      </h2>
       <Button asChild>
         <Link href={"/builder"}>Go back to home</Link>
       </Button>
