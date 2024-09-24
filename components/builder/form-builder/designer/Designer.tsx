@@ -1,5 +1,5 @@
 import { DndContext } from "@dnd-kit/core";
-import DesignerEditor from "@/components/builder/form-builder/designer/DesignerEditor";
+import DesignerEditor from "@/components/builder/form-builder/designer/editor/DesignerEditor";
 import DesignerSidebar from "@/components/builder/form-builder/designer/DesignerSidebar";
 import DesignerDragOverlay from "@/components/builder/form-builder/designer/DesignerDragOverlay";
 
