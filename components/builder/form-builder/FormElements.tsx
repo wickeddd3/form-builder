@@ -1,5 +1,5 @@
 import { ElementType, FC } from "react";
-import { TextFieldFormElement } from "@/components/builder/form-builder/fields/TextField";
+import { TextFieldFormElement } from "@/components/builder/form-builder/fields/text-field/TextField";
 
 export type ElementsType = "TextField";
 
@@ -11,6 +11,9 @@ export type FormElement = {
     label: string;
   };
   designerComponent: FC<{
+    elementInstance: FormElementInstance;
+  }>;
+  propertiesComponent: React.FC<{
     elementInstance: FormElementInstance;
   }>;
 };
