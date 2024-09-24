@@ -12,7 +12,7 @@ function DesignerEditorElementWrapper({
 }: {
   element: FormElementInstance;
 }) {
-  const { removeElement } = useDesigner();
+  const { removeElement, setSelectedElement } = useDesigner();
   const [mouseIsOver, setMouseIsOver] = useState<boolean>(false);
 
   const topHalf = useDroppable({
@@ -58,6 +58,7 @@ function DesignerEditorElementWrapper({
       }}
       onClick={(e) => {
         e.stopPropagation();
+        setSelectedElement(element);
       }}
     >
       <div
