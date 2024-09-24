@@ -1,11 +1,11 @@
 import { DragEndEvent, useDndMonitor, useDroppable } from "@dnd-kit/core";
-import { RiDragDropLine } from "react-icons/ri";
 import {
   ElementsType,
   FormElements,
 } from "@/components/builder/form-builder/FormElements";
 import useDesigner from "@/hooks/use-designer";
 import { idGenerator } from "@/lib/idGenerator";
+import DesignerEditorEmptyPlaceholder from "@/components/builder/form-builder/designer/editor/DesignerEditorEmptyPlaceholder";
 
 function DesignerEditor() {
   const droppable = useDroppable({
@@ -48,12 +48,7 @@ function DesignerEditor() {
         className="bg-background max-w-[920px] h-full m-auto rounded-xl flex flex-col flex-grow items-center justify-start flex-1"
       >
         {!droppable.isOver && elements.length === 0 && (
-          <div className=" flex flex-grow flex-col items-center justify-center gap-6">
-            <RiDragDropLine className="h-14 w-14" />
-            <p className="text-xl md:text-3xl text-muted-foreground items-center font-bold">
-              Drag and Drop here
-            </p>
-          </div>
+          <DesignerEditorEmptyPlaceholder />
         )}
         {elements.length > 0 && (
           <div className="flex flex-col w-full gap-2 p-4">
