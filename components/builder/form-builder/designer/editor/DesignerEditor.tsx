@@ -7,6 +7,7 @@ import useDesigner from "@/hooks/use-designer";
 import { idGenerator } from "@/lib/idGenerator";
 import DesignerEditorEmptyPlaceholder from "@/components/builder/form-builder/designer/editor/DesignerEditorEmptyPlaceholder";
 import DesignerEditorElements from "@/components/builder/form-builder/designer/editor/DesignerEditorElements";
+import { cn } from "@/lib/utils";
 
 function DesignerEditor() {
   const droppable = useDroppable({
@@ -114,10 +115,18 @@ function DesignerEditor() {
     <div className="p-4 w-full">
       <div
         ref={droppable.setNodeRef}
-        className="bg-background max-w-[920px] h-full m-auto rounded-xl flex flex-col flex-grow items-center justify-start flex-1"
+        className={cn(
+          "bg-background max-w-[920px] h-full m-auto rounded-xl flex flex-col flex-grow items-center justify-start flex-1",
+          droppable.isOver && "ring-4  ring-primary ring-inset"
+        )}
       >
         {!droppable.isOver && elements.length === 0 && (
           <DesignerEditorEmptyPlaceholder />
+        )}
+        {droppable.isOver && elements.length === 0 && (
+          <div className="p-4 w-full">
+            <div className="h-[120px] rounded-md bg-primary/20"></div>
+          </div>
         )}
         {elements.length > 0 && <DesignerEditorElements elements={elements} />}
       </div>
