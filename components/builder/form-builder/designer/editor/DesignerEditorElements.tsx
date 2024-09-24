@@ -1,5 +1,5 @@
 import { FormElementInstance } from "@/components/builder/form-builder/FormElements";
-import DesignerEditorElement from "@/components/builder/form-builder/designer/editor/DesignerEditorElement";
+import DesignerEditorElementWrapper from "@/components/builder/form-builder/designer/editor/DesignerEditorElementWrapper";
 
 function DesignerEditorElements({
   elements,
@@ -9,7 +9,7 @@ function DesignerEditorElements({
   return (
     <div className="flex flex-col w-full gap-2 p-4">
       {elements.map((element) => (
-        <DesignerEditorElement key={element.id} element={element} />
+        <DesignerEditorElementWrapper key={element.id} element={element} />
       ))}
     </div>
   );
