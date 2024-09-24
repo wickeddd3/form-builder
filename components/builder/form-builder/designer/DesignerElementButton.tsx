@@ -1,13 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { useDraggable } from "@dnd-kit/core";
+import { FormElement } from "@/components/builder/form-builder/FormElements";
 
-function DesignerElementButton() {
+function DesignerElementButton({ formElement }: { formElement: FormElement }) {
   const draggable = useDraggable({
-    id: "designer-button",
+    id: `designer-button-${formElement.type}`,
     data: {
+      type: formElement.type,
       isDesignerElementButton: true,
     },
   });
+
+  const { label, icon: Icon } = formElement.designerElementButton;
 
   return (
     <Button
@@ -17,18 +21,26 @@ function DesignerElementButton() {
       {...draggable.listeners}
       {...draggable.attributes}
     >
-      <p className="text-xs">Text Field</p>
+      <Icon className="h-8 w-8 text-primary cursor-grab" />
+      <p className="text-xs">{label}</p>
     </Button>
   );
 }
 
-export function DesignerElementButtonDragOverlay() {
+export function DesignerElementButtonDragOverlay({
+  formElement,
+}: {
+  formElement: FormElement;
+}) {
+  const { label, icon: Icon } = formElement.designerElementButton;
+
   return (
     <Button
       variant={"outline"}
       className="flex flex-col gap-2 h-[120px] w-[120px] cursor-grab"
     >
-      <p className="text-xs">Text Field</p>
+      <Icon className="h-8 w-8 text-primary cursor-grab" />
+      <p className="text-xs">{label}</p>
     </Button>
   );
 }
