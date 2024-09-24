@@ -1,13 +1,16 @@
 import { Active, DragOverlay, useDndMonitor } from "@dnd-kit/core";
 import { useState } from "react";
 import { DesignerElementButtonDragOverlay } from "@/components/builder/form-builder/designer/DesignerElementButton";
+import {
+  ElementsType,
+  FormElements,
+} from "@/components/builder/form-builder/FormElements";
 
 function DesignerDragOverlay() {
   const [draggedItem, setDraggedItem] = useState<Active | null>(null);
 
   useDndMonitor({
     onDragStart: (event) => {
-      console.log(event);
       setDraggedItem(event.active);
     },
     onDragCancel: () => {
@@ -21,11 +24,14 @@ function DesignerDragOverlay() {
   if (!draggedItem) return null;
 
   let node = null;
-  const isSidebarBtnElement =
+  const isDesignerElementButton =
     draggedItem.data?.current?.isDesignerElementButton;
 
-  if (isSidebarBtnElement) {
-    node = <DesignerElementButtonDragOverlay />;
+  if (isDesignerElementButton) {
+    const type = draggedItem.data?.current?.type as ElementsType;
+    node = (
+      <DesignerElementButtonDragOverlay formElement={FormElements[type]} />
+    );
   }
 
   return <DragOverlay>{node}</DragOverlay>;
