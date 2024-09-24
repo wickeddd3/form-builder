@@ -6,6 +6,7 @@ import {
 import useDesigner from "@/hooks/use-designer";
 import { idGenerator } from "@/lib/idGenerator";
 import DesignerEditorEmptyPlaceholder from "@/components/builder/form-builder/designer/editor/DesignerEditorEmptyPlaceholder";
+import DesignerEditorElements from "@/components/builder/form-builder/designer/editor/DesignerEditorElements";
 
 function DesignerEditor() {
   const droppable = useDroppable({
@@ -50,17 +51,7 @@ function DesignerEditor() {
         {!droppable.isOver && elements.length === 0 && (
           <DesignerEditorEmptyPlaceholder />
         )}
-        {elements.length > 0 && (
-          <div className="flex flex-col w-full gap-2 p-4">
-            {elements.map((element) => {
-              const DesignerElement =
-                FormElements[element.type].designerComponent;
-              return (
-                <DesignerElement key={element.id} elementInstance={element} />
-              );
-            })}
-          </div>
-        )}
+        {elements.length > 0 && <DesignerEditorElements elements={elements} />}
       </div>
     </div>
   );
