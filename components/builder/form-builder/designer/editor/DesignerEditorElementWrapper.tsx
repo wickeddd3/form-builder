@@ -34,6 +34,8 @@ function DesignerEditorElementWrapper({
     },
   });
 
+  if (draggable.isDragging) return null;
+
   return (
     <div
       ref={draggable.setNodeRef}
