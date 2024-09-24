@@ -1,7 +1,5 @@
-import {
-  FormElementInstance,
-  FormElements,
-} from "@/components/builder/form-builder/FormElements";
+import { FormElementInstance } from "@/components/builder/form-builder/FormElements";
+import DesignerEditorElement from "@/components/builder/form-builder/designer/editor/DesignerEditorElement";
 
 function DesignerEditorElements({
   elements,
@@ -10,10 +8,9 @@ function DesignerEditorElements({
 }) {
   return (
     <div className="flex flex-col w-full gap-2 p-4">
-      {elements.map((element) => {
-        const DesignerElement = FormElements[element.type].designerComponent;
-        return <DesignerElement key={element.id} elementInstance={element} />;
-      })}
+      {elements.map((element) => (
+        <DesignerEditorElement key={element.id} element={element} />
+      ))}
     </div>
   );
 }
