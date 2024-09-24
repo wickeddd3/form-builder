@@ -1,4 +1,4 @@
-import DesignerElements from "@/components/builder/form-builder/designer/DesignerElements";
+import DesignerElements from "@/components/builder/form-builder/designer/sidebar/DesignerElements";
 
 function DesignerSidebar() {
   return (

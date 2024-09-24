@@ -1,4 +1,4 @@
-import DesignerElementButton from "@/components/builder/form-builder/designer/DesignerElementButton";
+import DesignerElementButton from "@/components/builder/form-builder/designer/sidebar/DesignerElementButton";
 import { FormElements } from "@/components/builder/form-builder/FormElements";
 
 function DesignerElements() {

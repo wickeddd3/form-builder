@@ -1,6 +1,6 @@
 import { DndContext } from "@dnd-kit/core";
 import DesignerEditor from "@/components/builder/form-builder/designer/editor/DesignerEditor";
-import DesignerSidebar from "@/components/builder/form-builder/designer/DesignerSidebar";
+import DesignerSidebar from "@/components/builder/form-builder/designer/sidebar/DesignerSidebar";
 import DesignerDragOverlay from "@/components/builder/form-builder/designer/DesignerDragOverlay";
 
 function Designer() {

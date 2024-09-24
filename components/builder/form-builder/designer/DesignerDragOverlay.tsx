@@ -1,6 +1,6 @@
 import { Active, DragOverlay, useDndMonitor } from "@dnd-kit/core";
 import { useState } from "react";
-import { DesignerElementButtonDragOverlay } from "@/components/builder/form-builder/designer/DesignerElementButton";
+import { DesignerElementButtonDragOverlay } from "@/components/builder/form-builder/designer/sidebar/DesignerElementButton";
 import {
   ElementsType,
   FormElements,
