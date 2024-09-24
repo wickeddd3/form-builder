@@ -17,7 +17,8 @@ function DesignerEditor() {
     },
   });
 
-  const { elements, addElement, removeElement } = useDesigner();
+  const { elements, addElement, removeElement, setSelectedElement } =
+    useDesigner();
 
   useDndMonitor({
     onDragEnd: (event: DragEndEvent) => {
@@ -112,7 +113,12 @@ function DesignerEditor() {
   });
 
   return (
-    <div className="p-4 w-full">
+    <div
+      className="p-4 w-full"
+      onClick={() => {
+        setSelectedElement(null);
+      }}
+    >
       <div
         ref={droppable.setNodeRef}
         className={cn(
