@@ -8,8 +8,15 @@ import {
 import DesignerEditor from "@/components/builder/form-builder/designer/editor/DesignerEditor";
 import DesignerSidebar from "@/components/builder/form-builder/designer/sidebar/DesignerSidebar";
 import DesignerDragOverlay from "@/components/builder/form-builder/designer/DesignerDragOverlay";
+import { Form } from "@prisma/client";
+import useDesigner from "@/hooks/use-designer";
+import { useEffect, useState } from "react";
+import { ImSpinner2 } from "react-icons/im";
 
-function Designer() {
+function Designer({ form }: { form: Form }) {
+  const { setElements } = useDesigner();
+  const [isReady, setIsReady] = useState(false);
+
   const mouseSensor = useSensor(MouseSensor, {
     activationConstraint: {
       distance: 10, //10px
@@ -24,6 +31,22 @@ function Designer() {
   });
 
   const sensors = useSensors(mouseSensor, touchSensor);
+
+  useEffect(() => {
+    if (isReady) return;
+    const elements = JSON.parse(form.content);
+    setElements(elements);
+    const readyTimeout = setTimeout(() => setIsReady(true), 500);
+    return () => clearTimeout(readyTimeout);
+  }, [isReady, form, setElements]);
+
+  if (!isReady) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full h-full">
+        <ImSpinner2 className="animate-spin h-12 w-12" />
+      </div>
+    );
+  }
 
   return (
     <DndContext sensors={sensors}>
