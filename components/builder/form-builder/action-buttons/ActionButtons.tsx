@@ -11,7 +11,7 @@ function ActionButtons({ form }: { form: Form }) {
         <PreviewFormDialogButton />
         {!form.published && (
           <>
-            <SaveFormButton />
+            <SaveFormButton id={form.id} />
             <PublishFormButton />
           </>
         )}
