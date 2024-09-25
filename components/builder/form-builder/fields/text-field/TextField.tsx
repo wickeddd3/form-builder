@@ -8,6 +8,7 @@ import {
 import { MdTextFields } from "react-icons/md";
 import TextFieldDesignerComponent from "./TextFieldDesignerComponent";
 import TextFieldPropertiesComponent from "./TextFieldPropertiesComponent";
+import TextFieldFormComponent from "./TextFieldFormComponent";
 
 const type: ElementsType = "TextField";
 
@@ -31,6 +32,7 @@ export const TextFieldFormElement: FormElement = {
   },
   designerComponent: TextFieldDesignerComponent,
   propertiesComponent: TextFieldPropertiesComponent,
+  formComponent: TextFieldFormComponent,
 };
 
 export type CustomInstance = FormElementInstance & {
