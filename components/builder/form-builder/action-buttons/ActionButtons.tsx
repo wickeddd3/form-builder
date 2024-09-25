@@ -12,7 +12,7 @@ function ActionButtons({ form }: { form: Form }) {
         {!form.published && (
           <>
             <SaveFormButton id={form.id} />
-            <PublishFormButton />
+            <PublishFormButton id={form.id} />
           </>
         )}
       </div>
