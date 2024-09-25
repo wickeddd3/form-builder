@@ -10,7 +10,7 @@ function FormBuilder({ form }: { form: Form }) {
     <DesignerContextProvider>
       <main className="flex flex-col w-full">
         <ActionButtons form={form} />
-        <Designer />
+        <Designer form={form} />
       </main>
     </DesignerContextProvider>
   );
