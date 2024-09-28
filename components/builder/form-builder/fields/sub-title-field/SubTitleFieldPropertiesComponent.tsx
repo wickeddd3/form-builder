@@ -59,7 +59,7 @@ function SubTitleFieldPropertiesComponent({
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Title</FormLabel>
+              <FormLabel>SubTitle</FormLabel>
               <FormControl>
                 <Input
                   {...field}
