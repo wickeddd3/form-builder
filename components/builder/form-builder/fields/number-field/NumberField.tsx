@@ -6,9 +6,9 @@ import {
   FormElementInstance,
 } from "@/components/builder/form-builder/FormElements";
 import { Bs123 } from "react-icons/bs";
-import TextFieldDesignerComponent from "./NumberFieldDesignerComponent";
-import TextFieldPropertiesComponent from "./NumberFieldPropertiesComponent";
-import TextFieldFormComponent from "./NumberFieldFormComponent";
+import NumberFieldDesignerComponent from "./NumberFieldDesignerComponent";
+import NumberFieldPropertiesComponent from "./NumberFieldPropertiesComponent";
+import NumberFieldFormComponent from "./NumberFieldFormComponent";
 
 const type: ElementsType = "NumberField";
 
@@ -30,9 +30,9 @@ export const NumberFieldFormElement: FormElement = {
     icon: Bs123,
     label: "Number Field",
   },
-  designerComponent: TextFieldDesignerComponent,
-  propertiesComponent: TextFieldPropertiesComponent,
-  formComponent: TextFieldFormComponent,
+  designerComponent: NumberFieldDesignerComponent,
+  propertiesComponent: NumberFieldPropertiesComponent,
+  formComponent: NumberFieldFormComponent,
 
   validate: (
     formElement: FormElementInstance,
