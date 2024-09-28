@@ -19,7 +19,7 @@ import useDesigner from "@/hooks/use-designer";
 import { propertiesSchema, propertiesSchemaType } from "./schema";
 import { Slider } from "@/components/ui/slider";
 
-function TextAreaPropertiesComponent({
+function TextAreaFieldPropertiesComponent({
   elementInstance,
 }: {
   elementInstance: FormElementInstance;
@@ -171,4 +171,4 @@ function TextAreaPropertiesComponent({
   );
 }
 
-export default TextAreaPropertiesComponent;
+export default TextAreaFieldPropertiesComponent;
