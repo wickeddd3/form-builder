@@ -15,9 +15,11 @@ import { MdOutlinePublish } from "react-icons/md";
 import { useTransition } from "react";
 import { toast } from "@/hooks/use-toast";
 import { publishForm } from "@/actions/form";
+import { useRouter } from "next/navigation";
 
 function PublishFormButton({ id }: { id: string }) {
   const [loading, startTransition] = useTransition();
+  const router = useRouter();
 
   async function publishFormContent() {
     try {
@@ -26,6 +28,7 @@ function PublishFormButton({ id }: { id: string }) {
         title: "Success",
         description: "Your form is now available to the public",
       });
+      router.refresh();
     } catch (error) {
       toast({
         title: "Error",
