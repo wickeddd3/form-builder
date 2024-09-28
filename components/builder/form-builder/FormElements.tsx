@@ -22,6 +22,7 @@ export type FormElement = {
     elementInstance: FormElementInstance;
     submitValue?: SubmitFunction;
     isInvalid?: boolean;
+    defaultValue?: string;
   }>;
 
   validate: (formElement: FormElementInstance, currentValue: string) => boolean;
