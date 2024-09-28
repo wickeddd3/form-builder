@@ -5,11 +5,10 @@ import {
   FormElement,
   FormElementInstance,
 } from "@/components/builder/form-builder/FormElements";
-import { RiSeparator } from "react-icons/ri";
+import { LuSeparatorHorizontal } from "react-icons/lu";
 import SpacerFieldDesignerComponent from "./SpacerFieldDesignerComponent";
 import SpacerFieldPropertiesComponent from "./SpacerFieldPropertiesComponent";
 import SpacerFieldFormComponent from "./SpacerFieldFormComponent";
-import { LuSeparatorHorizontal } from "react-icons/lu";
 
 const type: ElementsType = "SpacerField";
 
