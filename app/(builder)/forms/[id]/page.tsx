@@ -1,5 +1,6 @@
 import { getFormById } from "@/actions/form";
 import FormLinkShare from "@/components/builder/forms/FormLinkShare";
+import FormSubmissionsTable from "@/components/builder/forms/FormSubmissionsTable";
 import VisitButton from "@/components/builder/forms/VisitButton";
 import StatsCard from "@/components/builder/stats/StatsCard";
 import { FaWpforms } from "react-icons/fa";
@@ -73,7 +74,7 @@ async function Page({ params }: { params: { id: string } }) {
         />
       </div>
       <div className="pt-10 px-4">
-
+        <FormSubmissionsTable id={form.id} />
       </div>
     </>
   );
