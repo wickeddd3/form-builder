@@ -20,6 +20,7 @@ function DesignerElements() {
           Form elements
         </p>
         <DesignerElementButton formElement={FormElements.TextField} />
+        <DesignerElementButton formElement={FormElements.NumberField} />
       </div>
     </div>
   );
