@@ -8,6 +8,7 @@ import {
 import DesignerEditor from "@/components/builder/form-builder/designer/editor/DesignerEditor";
 import DesignerSidebar from "@/components/builder/form-builder/designer/sidebar/DesignerSidebar";
 import DesignerDragOverlay from "@/components/builder/form-builder/designer/DesignerDragOverlay";
+import DesignerPublishSuccessful from "@/components/builder/form-builder/designer/DesignerPublishSuccessful";
 import { Form } from "@prisma/client";
 import useDesigner from "@/hooks/use-designer";
 import { useEffect, useState } from "react";
@@ -46,6 +47,10 @@ function Designer({ form }: { form: Form }) {
         <ImSpinner2 className="animate-spin h-12 w-12" />
       </div>
     );
+  }
+
+  if (form.published) {
+    return <DesignerPublishSuccessful form={form} />;
   }
 
   return (
