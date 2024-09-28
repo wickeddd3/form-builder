@@ -3,12 +3,14 @@ import { TextFieldFormElement } from "@/components/builder/form-builder/fields/t
 import { TitleFieldFormElement } from "@/components/builder/form-builder/fields/title-field/TitleField";
 import { SubTitleFieldFormElement } from "@/components/builder/form-builder/fields/sub-title-field/SubTitleField";
 import { ParagraphFieldFormElement } from "@/components/builder/form-builder/fields/paragraph-field/ParagraphField";
+import { SeparatorFieldFormElement } from "@/components/builder/form-builder/fields/separator-field/SeparatorField";
 
 export type ElementsType =
   | "TextField"
   | "TitleField"
   | "SubTitleField"
-  | "ParagraphField";
+  | "ParagraphField"
+  | "SeparatorField";
 
 export type SubmitFunction = (key: string, value: string) => void;
 
@@ -50,4 +52,5 @@ export const FormElements: FormElementsType = {
   TitleField: TitleFieldFormElement,
   SubTitleField: SubTitleFieldFormElement,
   ParagraphField: ParagraphFieldFormElement,
+  SeparatorField: SeparatorFieldFormElement,
 };
