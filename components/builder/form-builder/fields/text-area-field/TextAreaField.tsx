@@ -6,9 +6,9 @@ import {
   FormElementInstance,
 } from "@/components/builder/form-builder/FormElements";
 import { BsTextareaResize } from "react-icons/bs";
-import TextFieldDesignerComponent from "./TextAreaFieldDesignerComponent";
-import TextFieldPropertiesComponent from "./TextAreaPropertiesComponent";
-import TextFieldFormComponent from "./TextAreaFieldFormComponent";
+import TextAreaFieldDesignerComponent from "./TextAreaFieldDesignerComponent";
+import TextAreaFieldPropertiesComponent from "./TextAreaFieldPropertiesComponent";
+import TextAreaFieldFormComponent from "./TextAreaFieldFormComponent";
 
 const type: ElementsType = "TextAreaField";
 
@@ -31,9 +31,9 @@ export const TextAreaFieldFormElement: FormElement = {
     icon: BsTextareaResize,
     label: "TextArea Field",
   },
-  designerComponent: TextFieldDesignerComponent,
-  propertiesComponent: TextFieldPropertiesComponent,
-  formComponent: TextFieldFormComponent,
+  designerComponent: TextAreaFieldDesignerComponent,
+  propertiesComponent: TextAreaFieldPropertiesComponent,
+  formComponent: TextAreaFieldFormComponent,
 
   validate: (
     formElement: FormElementInstance,
