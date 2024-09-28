@@ -21,6 +21,7 @@ function DesignerElements() {
         </p>
         <DesignerElementButton formElement={FormElements.TextField} />
         <DesignerElementButton formElement={FormElements.NumberField} />
+        <DesignerElementButton formElement={FormElements.TextAreaField} />
       </div>
     </div>
   );
