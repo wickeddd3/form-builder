@@ -24,6 +24,7 @@ function DesignerElements() {
         <DesignerElementButton formElement={FormElements.TextAreaField} />
         <DesignerElementButton formElement={FormElements.DateField} />
         <DesignerElementButton formElement={FormElements.SelectField} />
+        <DesignerElementButton formElement={FormElements.CheckboxField} />
       </div>
     </div>
   );
