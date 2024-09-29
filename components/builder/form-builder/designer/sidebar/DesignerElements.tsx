@@ -23,6 +23,7 @@ function DesignerElements() {
         <DesignerElementButton formElement={FormElements.NumberField} />
         <DesignerElementButton formElement={FormElements.TextAreaField} />
         <DesignerElementButton formElement={FormElements.DateField} />
+        <DesignerElementButton formElement={FormElements.SelectField} />
       </div>
     </div>
   );
