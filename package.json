@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lintfix": "eslint --fix ./**/* --ext .ts,tsx,.js,.jsx --format stylish"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.6.0",
