@@ -9,6 +9,7 @@ import { NumberFieldFormElement } from "@/components/builder/form-builder/fields
 import { TextAreaFieldFormElement } from "@/components/builder/form-builder/fields/text-area-field/TextAreaField";
 import { DateFieldFormElement } from "@/components/builder/form-builder/fields/date-field/DateField";
 import { SelectFieldFormElement } from "@/components/builder/form-builder/fields/select-field/SelectField";
+import { CheckboxFieldFormElement } from "@/components/builder/form-builder/fields/checkbox-field/CheckboxField";
 
 export type ElementsType =
   | "TextField"
@@ -20,7 +21,8 @@ export type ElementsType =
   | "NumberField"
   | "TextAreaField"
   | "DateField"
-  | "SelectField";
+  | "SelectField"
+  | "CheckboxField";
 
 export type SubmitFunction = (key: string, value: string) => void;
 
@@ -50,7 +52,8 @@ export type FormElement = {
 export type FormElementInstance = {
   id: string;
   type: ElementsType;
-  extraAttributes?: Record<string, unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  extraAttributes?: Record<string, any>;
 };
 
 type FormElementsType = {
@@ -68,4 +71,5 @@ export const FormElements: FormElementsType = {
   TextAreaField: TextAreaFieldFormElement,
   DateField: DateFieldFormElement,
   SelectField: SelectFieldFormElement,
+  CheckboxField: CheckboxFieldFormElement,
 };
