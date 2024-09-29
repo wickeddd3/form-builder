@@ -3,6 +3,8 @@ import {
   ElementsType,
   FormElementInstance,
 } from "@/components/builder/form-builder/FormElements";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Table,
   TableBody,
@@ -11,7 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { formatDistance } from "date-fns";
+import { format, formatDistance } from "date-fns";
 import { ReactNode } from "react";
 
 type Row = { [key: string]: string } & { submittedAt: Date };
@@ -104,6 +106,18 @@ async function FormSubmissionsTable({ id }: { id: string }) {
 export default FormSubmissionsTable;
 
 function RowCell({ type, value }: { type: ElementsType; value: string }) {
-  const node: ReactNode = value;
+  let node: ReactNode = value;
+
+  switch (type) {
+    case "DateField":
+      if (!value) break;
+      const date = new Date(value);
+      node = <Badge variant={"outline"}>{format(date, "dd/MM/yyyy")}</Badge>;
+      break;
+    case "CheckboxField":
+      const checked = value === "true";
+      node = <Checkbox checked={checked} disabled />;
+      break;
+  }
   return <TableCell>{node}</TableCell>;
 }
