@@ -1,0 +1,17 @@
+/.next
+/node_modules
+/app/fonts
+/app/*.css
+/app/*.ico
+/components/ui
+/*.md
+/public
+/prisma
+/.env.example
+/package.json
+/package-lock.json
+/yarn.lock
+/components.json
+/tailwind.config.ts
+/tsconfig.json
+/.eslintrc.json
