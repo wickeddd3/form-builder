@@ -23,7 +23,7 @@ async function FormSubmissionsTable({ id }: { id: string }) {
     throw new Error("Form not found");
   }
 
-  const formElements = JSON.parse(form.content) as FormElementInstance;
+  const formElements = JSON.parse(form.content) as FormElementInstance[];
   const columns: {
     id: string;
     label: string;
@@ -34,6 +34,11 @@ async function FormSubmissionsTable({ id }: { id: string }) {
   formElements.forEach((element) => {
     switch (element.type) {
       case "TextField":
+      case "NumberField":
+      case "TextAreaField":
+      case "DateField":
+      case "SelectField":
+      case "CheckboxField":
         columns.push({
           id: element.id,
           label: element.extraAttributes?.label,
