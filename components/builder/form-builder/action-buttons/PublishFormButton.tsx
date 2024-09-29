@@ -29,7 +29,7 @@ function PublishFormButton({ id }: { id: string }) {
         description: "Your form is now available to the public",
       });
       router.refresh();
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Something went wrong",

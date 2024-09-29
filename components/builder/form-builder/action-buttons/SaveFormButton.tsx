@@ -18,7 +18,7 @@ function SaveFormButton({ id }: { id: string }) {
         title: "Success",
         description: "Your form has been saved",
       });
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Something went wrong",

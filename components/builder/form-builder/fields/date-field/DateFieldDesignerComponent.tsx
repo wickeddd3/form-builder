@@ -2,7 +2,6 @@
 
 import { FormElementInstance } from "@/components/builder/form-builder/FormElements";
 import { CustomInstance } from "./DateField";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { CalendarIcon } from "lucide-react";

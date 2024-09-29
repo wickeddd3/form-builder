@@ -61,7 +61,7 @@ export default function FormSubmitComponent({
       const jsonContent = JSON.stringify(formValues.current);
       await submitFormValue(formUrl, jsonContent);
       setSubmitted(true);
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Something went wrong",

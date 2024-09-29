@@ -47,7 +47,7 @@ function CreateForm() {
         description: "Form created successfully",
       });
       router.push(`/builder/${formId}`);
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Something went wrong, please try again later",
