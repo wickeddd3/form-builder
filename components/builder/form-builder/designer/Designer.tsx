@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import { ImSpinner2 } from "react-icons/im";
 
 function Designer({ form }: { form: Form }) {
-  const { setElements } = useDesigner();
+  const { setElements, setSelectedElement } = useDesigner();
   const [isReady, setIsReady] = useState(false);
 
   const mouseSensor = useSensor(MouseSensor, {
@@ -37,9 +37,11 @@ function Designer({ form }: { form: Form }) {
     if (isReady) return;
     const elements = JSON.parse(form.content);
     setElements(elements);
+    setSelectedElement(null);
+    setIsReady(true);
     const readyTimeout = setTimeout(() => setIsReady(true), 500);
     return () => clearTimeout(readyTimeout);
-  }, [isReady, form, setElements]);
+  }, [isReady, form, setElements, setSelectedElement]);
 
   if (!isReady) {
     return (
