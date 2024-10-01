@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description: "Create your custom forms",
     url: "https://formbuilderapp.vercel.app",
     siteName: "FormBuilder",
-    images: "/og-image.png",
+    // images: "/og-image.png",
     locale: "en_US",
     type: "website",
   },
