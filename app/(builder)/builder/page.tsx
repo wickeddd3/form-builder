@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getForms, getFormStats } from "@/actions/form";
 import CreateFormButton from "@/components/builder/forms/CreateFormButton";
 import FormCards from "@/components/builder/forms/FormCards";
@@ -5,6 +6,10 @@ import FormCardSkeleton from "@/components/builder/forms/FormCardSkeleton";
 import StatsCards from "@/components/builder/stats/StatsCards";
 import { Separator } from "@/components/ui/separator";
 import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: "Builder",
+};
 
 export default async function Page() {
   const [stats, forms] = await Promise.all([getFormStats(), getForms()]);
