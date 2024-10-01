@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getFormById } from "@/actions/form";
 import FormLinkShare from "@/components/builder/forms/FormLinkShare";
 import FormSubmissionsTable from "@/components/builder/forms/FormSubmissionsTable";
@@ -7,6 +8,10 @@ import { FaWpforms } from "react-icons/fa";
 import { HiCursorClick } from "react-icons/hi";
 import { LuView } from "react-icons/lu";
 import { TbArrowBounce } from "react-icons/tb";
+
+export const metadata: Metadata = {
+  title: "Form Details",
+};
 
 async function Page({ params }: { params: { id: string } }) {
   const { id } = params;

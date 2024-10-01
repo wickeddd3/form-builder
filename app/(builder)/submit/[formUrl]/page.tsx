@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { getFormContentByUrl } from "@/actions/form";
 import { FormElementInstance } from "@/components/builder/form-builder/FormElements";
 import FormSubmitComponent from "@/components/builder/forms/FormSubmitComponent";
+
+export const metadata: Metadata = {
+  title: "Form",
+};
 
 async function Page({ params }: { params: { formUrl: string } }) {
   const form = await getFormContentByUrl(params.formUrl);
