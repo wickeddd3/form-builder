@@ -51,7 +51,7 @@ function FormCard({
       <CardFooter>
         {published && (
           <Button asChild className="w-full mt-2 text-md gap-4">
-            <Link href={`/forms/${id}`}>
+            <Link href={`/builder/${id}/details`}>
               View submissions <BiRightArrowAlt />
             </Link>
           </Button>
