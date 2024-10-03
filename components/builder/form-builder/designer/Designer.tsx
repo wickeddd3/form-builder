@@ -57,8 +57,8 @@ function Designer({ form }: { form: Form }) {
 
   return (
     <DndContext sensors={sensors}>
-      <div className="flex w-full flex-grow items-center justify-center relative overflow-y-auto h-[200px] bg-accent bg-[url(/background/paper.svg)] dark:bg-[url(/background/paper-dark.svg)]">
-        <div className="flex w-full h-full">
+      <div className="w-full h-full bg-accent bg-[url(/background/paper.svg)] dark:bg-[url(/background/paper-dark.svg)]">
+        <div className="w-full h-full flex">
           <DesignerEditor />
           <DesignerSidebar />
         </div>

@@ -114,7 +114,12 @@ function DesignerEditor() {
 
   return (
     <div
-      className="p-4 w-full"
+      className="p-4 w-full h-[86vh] overflow-y-auto
+      [&::-webkit-scrollbar]:w-2
+    [&::-webkit-scrollbar-track]:bg-gray-100
+    [&::-webkit-scrollbar-thumb]:bg-gray-200
+    dark:[&::-webkit-scrollbar-track]:bg-neutral-800
+    dark:[&::-webkit-scrollbar-thumb]:bg-neutral-700"
       onClick={() => {
         setSelectedElement(null);
       }}
@@ -122,7 +127,7 @@ function DesignerEditor() {
       <div
         ref={droppable.setNodeRef}
         className={cn(
-          "bg-background max-w-[920px] h-full m-auto rounded-xl flex flex-col flex-grow items-center justify-start flex-1",
+          "bg-background max-w-[920px] h-auto m-auto rounded-xl flex flex-col flex-grow items-center justify-start flex-1",
           droppable.isOver && "ring-4  ring-primary ring-inset"
         )}
       >

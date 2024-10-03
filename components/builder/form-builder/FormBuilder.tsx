@@ -8,7 +8,7 @@ import DesignerContextProvider from "@/context/DesignerContext";
 function FormBuilder({ form }: { form: Form }) {
   return (
     <DesignerContextProvider>
-      <main className="flex flex-col w-full">
+      <main className="flex flex-col w-full h-full">
         <ActionButtons form={form} />
         <Designer form={form} />
       </main>

@@ -7,7 +7,7 @@ function DesignerEditorElements({
   elements: FormElementInstance[];
 }) {
   return (
-    <div className="flex flex-col w-full gap-2 p-4">
+    <div className="flex flex-col w-full h-full gap-2 p-4">
       {elements.map((element) => (
         <DesignerEditorElementWrapper key={element.id} element={element} />
       ))}
