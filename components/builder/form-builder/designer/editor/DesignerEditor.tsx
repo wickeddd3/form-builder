@@ -114,8 +114,9 @@ function DesignerEditor() {
 
   return (
     <div
-      className="p-4 w-full h-[86vh] overflow-y-auto
+      className="px-4 py-8 w-full h-full flex flex-col items-center justify-center overflow-y-auto
       [&::-webkit-scrollbar]:w-2
+      [&::-webkit-scrollbar-thumb]:rounded-full
     [&::-webkit-scrollbar-track]:bg-gray-100
     [&::-webkit-scrollbar-thumb]:bg-gray-200
     dark:[&::-webkit-scrollbar-track]:bg-neutral-800
@@ -127,7 +128,7 @@ function DesignerEditor() {
       <div
         ref={droppable.setNodeRef}
         className={cn(
-          "bg-background max-w-[920px] h-auto m-auto rounded-xl flex flex-col flex-grow items-center justify-start flex-1",
+          "bg-background max-w-[920px] w-full h-fit rounded-xl flex flex-col items-center flex-grow justify-start",
           droppable.isOver && "ring-4  ring-primary ring-inset"
         )}
       >
