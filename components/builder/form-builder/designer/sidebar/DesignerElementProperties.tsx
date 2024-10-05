@@ -13,7 +13,7 @@ function DesignerElementProperties() {
     FormElements[selectedElement?.type].propertiesComponent;
 
   return (
-    <div className="flex flex-col p-2">
+    <div className="h-full w-full flex flex-col p-2">
       <div className="flex justify-between items-center">
         <h6 className="text-md font-medium">Element Properties</h6>
         <Button
