@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 
 function DesignerElements() {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="h-full w-full flex flex-col gap-2">
       <h6 className="text-md font-medium">Drag and drop elements</h6>
       <Separator className="my-2" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2 place-items-center">
