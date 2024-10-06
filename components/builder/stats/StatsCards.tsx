@@ -6,7 +6,7 @@ import { LuView } from "react-icons/lu";
 import { TbArrowBounce } from "react-icons/tb";
 
 export interface StatsCardsProps {
-  data?: Awaited<ReturnType<typeof getFormStats>>;
+  data?: Awaited<ReturnType<typeof getFormStats>> | null;
   loading: boolean;
 }
 
