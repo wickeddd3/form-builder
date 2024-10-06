@@ -14,9 +14,10 @@ import { BsFileEarmarkPlus } from "react-icons/bs";
 
 function CreateFormButton() {
   return (
-    <Dialog>
+    <Dialog data-testid="dialog">
       <DialogTrigger asChild>
         <Button
+          role="button"
           variant={"outline"}
           className="group border border-primary/20 h-[190px] items-center justify-center flex flex-col hover:border-primary hover:cursor-pointer border-dashed gap-4"
         >

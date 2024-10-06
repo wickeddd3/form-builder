@@ -57,7 +57,7 @@ function CreateForm() {
   }
 
   return (
-    <Form {...form}>
+    <Form {...form} data-testid="create-form">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
         <FormField
           control={control}
