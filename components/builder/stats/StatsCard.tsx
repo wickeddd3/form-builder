@@ -30,7 +30,7 @@ function StatsCard({
       <CardContent>
         <div className="text-2xl font-bold">
           {loading && (
-            <Skeleton>
+            <Skeleton className="skeleton">
               <span className="opacity-0">0</span>
             </Skeleton>
           )}

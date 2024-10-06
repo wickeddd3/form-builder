@@ -5,7 +5,7 @@ import { HiCursorClick } from "react-icons/hi";
 import { LuView } from "react-icons/lu";
 import { TbArrowBounce } from "react-icons/tb";
 
-interface StatsCardsProps {
+export interface StatsCardsProps {
   data?: Awaited<ReturnType<typeof getFormStats>>;
   loading: boolean;
 }
