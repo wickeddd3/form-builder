@@ -4,7 +4,10 @@ import { SignedIn, UserButton } from "@clerk/nextjs";
 
 function Navbar() {
   return (
-    <nav className="flex justify-between items-center border-b border-border h-[56px] px-4 py-2">
+    <nav
+      data-testid="navbar"
+      className="flex justify-between items-center border-b border-border h-[56px] px-4 py-2"
+    >
       <Logo />
       <div className="flex gap-4 items-center">
         <ThemeSwitcher />
