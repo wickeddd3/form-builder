@@ -92,7 +92,9 @@ function CreateForm() {
         className="w-full mt-4"
       >
         {!isSubmitting && <span>Save</span>}
-        {isSubmitting && <ImSpinner2 className="animate-spin" />}
+        {isSubmitting && (
+          <ImSpinner2 className="animate-spin" data-testid="spinner-icon" />
+        )}
       </Button>
     </Form>
   );
