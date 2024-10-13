@@ -24,7 +24,7 @@ function FormCard({
   form: { id, name, description, published, createdAt, visits, submissions },
 }: FormCardProps) {
   return (
-    <Card>
+    <Card data-testid="form-card">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 justify-between">
           <span className="truncate font-bold">{name}</span>
