@@ -3,7 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
-function VisitButton({ shareUrl }: { shareUrl: string }) {
+interface VisitButtonProps {
+  shareUrl: string;
+}
+function VisitButton({ shareUrl }: VisitButtonProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -11,18 +14,17 @@ function VisitButton({ shareUrl }: { shareUrl: string }) {
   }, []);
 
   if (!mounted) {
-    return null; // avoiding window not defined error
+    return null;
   }
 
   const shareLink = `${window.location.origin}/submit/${shareUrl}`;
 
+  const handleVisit = () => {
+    window.open(shareLink, "_blank");
+  };
+
   return (
-    <Button
-      className="w-[200px]"
-      onClick={() => {
-        window.open(shareLink, "_blank");
-      }}
-    >
+    <Button className="w-[200px]" onClick={handleVisit}>
       Visit
     </Button>
   );
