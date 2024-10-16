@@ -68,7 +68,10 @@ function PublishFormButton({ id }: { id: string }) {
               startTransition(publishFormContent);
             }}
           >
-            Proceed {loading && <FaSpinner className="animate-spin" />}
+            Proceed{" "}
+            {loading && (
+              <FaSpinner className="animate-spin" data-testid="spinner-icon" />
+            )}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
