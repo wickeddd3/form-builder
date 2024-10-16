@@ -32,13 +32,13 @@ function SaveFormButton({ id }: { id: string }) {
       variant={"outline"}
       className="gap-2"
       disabled={loading}
-      onClick={() => {
-        startTransition(updateFormContent);
-      }}
+      onClick={() => startTransition(updateFormContent)}
     >
       <MdOutlineSave className="h-5 w-5" />
       Save
-      {loading && <FaSpinner className="animate-spin" />}
+      {loading && (
+        <FaSpinner className="animate-spin" data-testid="spinner-icon" />
+      )}
     </Button>
   );
 }
