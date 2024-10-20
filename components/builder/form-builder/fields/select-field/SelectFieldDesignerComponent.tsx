@@ -1,7 +1,7 @@
 "use client";
 
 import { FormElementInstance } from "@/components/builder/form-builder/FormElements";
-import { CustomInstance } from "./SelectField";
+import { CustomInstance } from "./attributes";
 import { Select, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 

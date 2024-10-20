@@ -4,7 +4,8 @@ import {
   FormElementInstance,
   SubmitFunction,
 } from "@/components/builder/form-builder/FormElements";
-import { CustomInstance, SelectFieldFormElement } from "./SelectField";
+import { SelectFieldFormElement } from "./SelectField";
+import { CustomInstance } from "./attributes";
 import { Label } from "@/components/ui/label";
 import {
   Select,
