@@ -4,12 +4,12 @@ import {
   FormElementInstance,
   SubmitFunction,
 } from "@/components/builder/form-builder/FormElements";
-import { NumberFieldFormElement } from "./NumberField";
 import { CustomInstance } from "./attributes";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { validate } from "./utils";
 
 function NumberFieldFormComponent({
   elementInstance,
@@ -31,6 +31,13 @@ function NumberFieldFormComponent({
     setError(isInvalid === true);
   }, [isInvalid]);
 
+  const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!submitValue) return;
+    const valid = validate(element, e.target.value);
+    setError(!valid);
+    if (valid) submitValue(element.id, e.target.value);
+  };
+
   return (
     <div className="flex flex-col gap-2 w-full">
       <Label className={cn(error && "text-red-500")}>
@@ -42,16 +49,7 @@ function NumberFieldFormComponent({
         className={cn(error && "border-red-500")}
         placeholder={placeholder}
         onChange={(e) => setValue(e.target.value)}
-        onBlur={(e) => {
-          if (!submitValue) return;
-          const valid = NumberFieldFormElement.validate(
-            element,
-            e.target.value
-          );
-          setError(!valid);
-          if (!valid) return;
-          submitValue(element.id, e.target.value);
-        }}
+        onBlur={handleBlur}
         value={value}
       />
       {helperText && (
