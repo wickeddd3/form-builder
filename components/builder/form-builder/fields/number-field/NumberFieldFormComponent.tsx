@@ -4,7 +4,8 @@ import {
   FormElementInstance,
   SubmitFunction,
 } from "@/components/builder/form-builder/FormElements";
-import { CustomInstance, NumberFieldFormElement } from "./NumberField";
+import { NumberFieldFormElement } from "./NumberField";
+import { CustomInstance } from "./attributes";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
