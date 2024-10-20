@@ -4,11 +4,12 @@ import {
   FormElementInstance,
   SubmitFunction,
 } from "@/components/builder/form-builder/FormElements";
-import { CustomInstance, TextAreaFieldFormElement } from "./TextAreaField";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { CustomInstance } from "./attributes";
+import { validate } from "./utils";
 
 function TextAreaFieldFormComponent({
   elementInstance,
@@ -31,6 +32,13 @@ function TextAreaFieldFormComponent({
     setError(isInvalid === true);
   }, [isInvalid]);
 
+  const handleBlur = (e: { target: { value: string } }) => {
+    if (!submitValue) return;
+    const valid = validate(element, e.target.value);
+    setError(!valid);
+    if (valid) submitValue(element.id, e.target.value);
+  };
+
   return (
     <div className="flex flex-col gap-2 w-full">
       <Label className={cn(error && "text-red-500")}>
@@ -42,16 +50,7 @@ function TextAreaFieldFormComponent({
         rows={rows}
         placeholder={placeholder}
         onChange={(e) => setValue(e.target.value)}
-        onBlur={(e) => {
-          if (!submitValue) return;
-          const valid = TextAreaFieldFormElement.validate(
-            element,
-            e.target.value
-          );
-          setError(!valid);
-          if (!valid) return;
-          submitValue(element.id, e.target.value);
-        }}
+        onBlur={handleBlur}
         value={value}
       />
       {helperText && (
