@@ -59,9 +59,14 @@ function SpacerFieldPropertiesComponent({
           name="height"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Height (px): {form.watch("height")}</FormLabel>
+              <FormLabel htmlFor="slider-rows">
+                Height (px): {form.watch("height")}
+              </FormLabel>
               <FormControl className="pt-2">
                 <Slider
+                  data-testid="height-slider"
+                  role="slider"
+                  id="slider-rows"
                   defaultValue={[field.value]}
                   min={5}
                   max={200}
