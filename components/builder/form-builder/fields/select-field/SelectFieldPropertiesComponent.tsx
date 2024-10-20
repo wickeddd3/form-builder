@@ -66,6 +66,13 @@ function SelectFieldPropertiesComponent({
     setSelectedElement(null);
   }
 
+  const handleOnKeyDownEnter = (e: {
+    key: string;
+    currentTarget: { blur: () => void };
+  }) => {
+    if (e.key === "Enter") e.currentTarget.blur();
+  };
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(applyChanges)} className="space-y-3">
@@ -76,12 +83,7 @@ function SelectFieldPropertiesComponent({
             <FormItem>
               <FormLabel>Label</FormLabel>
               <FormControl>
-                <Input
-                  {...field}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") e.currentTarget.blur();
-                  }}
-                />
+                <Input {...field} onKeyDown={handleOnKeyDownEnter} />
               </FormControl>
               <FormDescription>
                 The label of the field. <br /> It will be displayed above the
@@ -97,12 +99,7 @@ function SelectFieldPropertiesComponent({
             <FormItem>
               <FormLabel>PlaceHolder</FormLabel>
               <FormControl>
-                <Input
-                  {...field}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") e.currentTarget.blur();
-                  }}
-                />
+                <Input {...field} onKeyDown={handleOnKeyDownEnter} />
               </FormControl>
               <FormDescription>The placeholder of the field.</FormDescription>
             </FormItem>
@@ -115,12 +112,7 @@ function SelectFieldPropertiesComponent({
             <FormItem>
               <FormLabel>Helper text</FormLabel>
               <FormControl>
-                <Input
-                  {...field}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") e.currentTarget.blur();
-                  }}
-                />
+                <Input {...field} onKeyDown={handleOnKeyDownEnter} />
               </FormControl>
               <FormDescription>
                 The helper text of the field. <br />
@@ -164,6 +156,7 @@ function SelectFieldPropertiesComponent({
                       }}
                     />
                     <Button
+                      role="remove"
                       variant={"ghost"}
                       size={"icon"}
                       onClick={(e) => {
