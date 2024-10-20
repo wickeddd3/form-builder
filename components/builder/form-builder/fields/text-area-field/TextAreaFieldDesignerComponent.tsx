@@ -1,7 +1,7 @@
 "use client";
 
 import { FormElementInstance } from "@/components/builder/form-builder/FormElements";
-import { CustomInstance } from "./TextAreaField";
+import { CustomInstance } from "./attributes";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
