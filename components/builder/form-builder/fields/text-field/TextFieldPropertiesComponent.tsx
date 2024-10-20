@@ -1,7 +1,7 @@
 "use client";
 
 import { FormElementInstance } from "@/components/builder/form-builder/FormElements";
-import { CustomInstance } from "./TextField";
+import { CustomInstance } from "./attributes";
 import {
   Form,
   FormControl,
