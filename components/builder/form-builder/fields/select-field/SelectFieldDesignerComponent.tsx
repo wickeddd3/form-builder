@@ -19,7 +19,7 @@ function SelectFieldDesignerComponent({
         {label}
         {required && "*"}
       </Label>
-      <Select>
+      <Select disabled>
         <SelectTrigger className="w-full">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
