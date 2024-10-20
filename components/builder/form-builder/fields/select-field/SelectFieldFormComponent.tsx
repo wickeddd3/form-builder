@@ -38,22 +38,21 @@ function SelectFieldFormComponent({
     setError(isInvalid === true);
   }, [isInvalid]);
 
+  const handleValueChange = (value: string) => {
+    setValue(value);
+    if (!submitValue) return;
+    const valid = SelectFieldFormElement.validate(element, value);
+    setError(!valid);
+    submitValue(element.id, value);
+  };
+
   return (
     <div className="flex flex-col gap-2 w-full">
       <Label className={cn(error && "text-red-500")}>
         {label}
         {required && "*"}
       </Label>
-      <Select
-        defaultValue={value}
-        onValueChange={(value) => {
-          setValue(value);
-          if (!submitValue) return;
-          const valid = SelectFieldFormElement.validate(element, value);
-          setError(!valid);
-          submitValue(element.id, value);
-        }}
-      >
+      <Select defaultValue={value} onValueChange={handleValueChange}>
         <SelectTrigger className={cn("w-full", error && "border-red-500")}>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
