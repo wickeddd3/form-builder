@@ -5,7 +5,7 @@ import { CustomInstance } from "./attributes";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
-function TextAreaFieldDesignerComponent({
+function TextareaFieldDesignerComponent({
   elementInstance,
 }: {
   elementInstance: FormElementInstance;
@@ -27,4 +27,4 @@ function TextAreaFieldDesignerComponent({
   );
 }
 
-export default TextAreaFieldDesignerComponent;
+export default TextareaFieldDesignerComponent;

@@ -21,7 +21,7 @@ function DesignerElements() {
         </p>
         <DesignerElementButton formElement={FormElements.TextField} />
         <DesignerElementButton formElement={FormElements.NumberField} />
-        <DesignerElementButton formElement={FormElements.TextAreaField} />
+        <DesignerElementButton formElement={FormElements.TextareaField} />
         <DesignerElementButton formElement={FormElements.DateField} />
         <DesignerElementButton formElement={FormElements.SelectField} />
         <DesignerElementButton formElement={FormElements.CheckboxField} />

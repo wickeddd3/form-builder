@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 import { CustomInstance } from "./attributes";
 import { validate } from "./utils";
 
-function TextAreaFieldFormComponent({
+function TextareaFieldFormComponent({
   elementInstance,
   submitValue,
   isInvalid,
@@ -67,4 +67,4 @@ function TextAreaFieldFormComponent({
   );
 }
 
-export default TextAreaFieldFormComponent;
+export default TextareaFieldFormComponent;

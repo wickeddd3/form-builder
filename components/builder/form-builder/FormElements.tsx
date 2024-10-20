@@ -6,7 +6,7 @@ import { ParagraphFieldFormElement } from "@/components/builder/form-builder/fie
 import { SeparatorFieldFormElement } from "@/components/builder/form-builder/fields/separator-field/SeparatorField";
 import { SpacerFieldFormElement } from "@/components/builder/form-builder/fields/spacer-field/SpacerField";
 import { NumberFieldFormElement } from "@/components/builder/form-builder/fields/number-field/NumberField";
-import { TextAreaFieldFormElement } from "@/components/builder/form-builder/fields/text-area-field/TextAreaField";
+import { TextareaFieldFormElement } from "@/components/builder/form-builder/fields/textarea-field/TextareaField";
 import { DateFieldFormElement } from "@/components/builder/form-builder/fields/date-field/DateField";
 import { SelectFieldFormElement } from "@/components/builder/form-builder/fields/select-field/SelectField";
 import { CheckboxFieldFormElement } from "@/components/builder/form-builder/fields/checkbox-field/CheckboxField";
@@ -19,7 +19,7 @@ export type ElementsType =
   | "SeparatorField"
   | "SpacerField"
   | "NumberField"
-  | "TextAreaField"
+  | "TextareaField"
   | "DateField"
   | "SelectField"
   | "CheckboxField";
@@ -71,7 +71,7 @@ export const FormElements: FormElementsType = {
   SeparatorField: SeparatorFieldFormElement,
   SpacerField: SpacerFieldFormElement,
   NumberField: NumberFieldFormElement,
-  TextAreaField: TextAreaFieldFormElement,
+  TextareaField: TextareaFieldFormElement,
   DateField: DateFieldFormElement,
   SelectField: SelectFieldFormElement,
   CheckboxField: CheckboxFieldFormElement,
