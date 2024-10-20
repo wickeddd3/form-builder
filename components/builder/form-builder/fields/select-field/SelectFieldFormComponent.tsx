@@ -4,7 +4,6 @@ import {
   FormElementInstance,
   SubmitFunction,
 } from "@/components/builder/form-builder/FormElements";
-import { SelectFieldFormElement } from "./SelectField";
 import { CustomInstance } from "./attributes";
 import { Label } from "@/components/ui/label";
 import {
@@ -16,6 +15,7 @@ import {
 } from "@/components/ui/select";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { validate } from "./utils";
 
 function SelectFieldFormComponent({
   elementInstance,
@@ -41,7 +41,7 @@ function SelectFieldFormComponent({
   const handleValueChange = (value: string) => {
     setValue(value);
     if (!submitValue) return;
-    const valid = SelectFieldFormElement.validate(element, value);
+    const valid = validate(element, value);
     setError(!valid);
     submitValue(element.id, value);
   };
