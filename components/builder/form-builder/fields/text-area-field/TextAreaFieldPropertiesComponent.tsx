@@ -1,7 +1,7 @@
 "use client";
 
 import { FormElementInstance } from "@/components/builder/form-builder/FormElements";
-import { CustomInstance } from "./TextAreaField";
+import { CustomInstance } from "./attributes";
 import {
   Form,
   FormControl,
@@ -56,6 +56,13 @@ function TextAreaFieldPropertiesComponent({
     });
   }
 
+  const handleOnKeyDownEnter = (e: {
+    key: string;
+    currentTarget: { blur: () => void };
+  }) => {
+    if (e.key === "Enter") e.currentTarget.blur();
+  };
+
   return (
     <Form {...form}>
       <form
@@ -72,12 +79,7 @@ function TextAreaFieldPropertiesComponent({
             <FormItem>
               <FormLabel>Label</FormLabel>
               <FormControl>
-                <Input
-                  {...field}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") e.currentTarget.blur();
-                  }}
-                />
+                <Input {...field} onKeyDown={handleOnKeyDownEnter} />
               </FormControl>
               <FormDescription>
                 The label of the field. <br /> It will be displayed above the
@@ -93,12 +95,7 @@ function TextAreaFieldPropertiesComponent({
             <FormItem>
               <FormLabel>PlaceHolder</FormLabel>
               <FormControl>
-                <Input
-                  {...field}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") e.currentTarget.blur();
-                  }}
-                />
+                <Input {...field} onKeyDown={handleOnKeyDownEnter} />
               </FormControl>
               <FormDescription>The placeholder of the field.</FormDescription>
             </FormItem>
@@ -111,12 +108,7 @@ function TextAreaFieldPropertiesComponent({
             <FormItem>
               <FormLabel>Helper text</FormLabel>
               <FormControl>
-                <Input
-                  {...field}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") e.currentTarget.blur();
-                  }}
-                />
+                <Input {...field} onKeyDown={handleOnKeyDownEnter} />
               </FormControl>
               <FormDescription>
                 The helper text of the field. <br />
