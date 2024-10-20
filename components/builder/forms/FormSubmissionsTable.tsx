@@ -37,7 +37,7 @@ async function FormSubmissionsTable({ id }: { id: string }) {
     switch (element.type) {
       case "TextField":
       case "NumberField":
-      case "TextAreaField":
+      case "TextareaField":
       case "DateField":
       case "SelectField":
       case "CheckboxField":
