@@ -122,9 +122,14 @@ function TextareaFieldPropertiesComponent({
           name="rows"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Rows {form.watch("rows")}</FormLabel>
+              <FormLabel htmlFor="slider-rows">
+                Rows {form.watch("rows")}
+              </FormLabel>
               <FormControl>
                 <Slider
+                  role="slider"
+                  id="slider-rows"
+                  aria-label={`Rows ${form.watch("rows")}`}
                   defaultValue={[field.value]}
                   min={1}
                   max={10}
