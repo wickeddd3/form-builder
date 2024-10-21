@@ -4,13 +4,13 @@ import "@testing-library/jest-dom";
 import NumberFieldPropertiesComponent from "@/components/builder/form-builder/fields/number-field/NumberFieldPropertiesComponent";
 import { FormElementInstance } from "@/components/builder/form-builder/FormElements";
 import { CustomInstance } from "@/components/builder/form-builder/fields/number-field/attributes";
-import useDesigner from "@/hooks/use-designer";
 
 // Mock the useDesigner hook
+const mockUpdateElement = jest.fn(); // Define the mock function
 jest.mock("@/hooks/use-designer", () => ({
   __esModule: true,
   default: jest.fn(() => ({
-    updateElement: jest.fn(),
+    updateElement: mockUpdateElement,
   })),
 }));
 
@@ -37,9 +37,7 @@ describe("NumberFieldPropertiesComponent", () => {
     expect(getByLabelText("Required")).not.toBeChecked();
   });
 
-  it("updates the element when form fields are changed", () => {
-    const { updateElement } = useDesigner();
-
+  it("updates the element when form fields are changed", async () => {
     const { getByLabelText } = render(
       <NumberFieldPropertiesComponent elementInstance={mockElementInstance} />
     );
@@ -51,11 +49,14 @@ describe("NumberFieldPropertiesComponent", () => {
       fireEvent.change(getByLabelText("Helper text"), {
         target: { value: "New Helper Text" },
       });
-      fireEvent.blur(getByLabelText("Helper text"));
     });
 
-    waitFor(() =>
-      expect(updateElement).toHaveBeenCalledWith(
+    act(() => {
+      fireEvent.blur(getByLabelText("Label"));
+    });
+
+    await waitFor(() =>
+      expect(mockUpdateElement).toHaveBeenCalledWith(
         "1",
         expect.objectContaining({
           extraAttributes: expect.objectContaining({
@@ -67,17 +68,18 @@ describe("NumberFieldPropertiesComponent", () => {
     );
   });
 
-  it("toggles the required switch", () => {
-    const { updateElement } = useDesigner();
-
+  it("toggles the required switch", async () => {
     const { getByLabelText } = render(
       <NumberFieldPropertiesComponent elementInstance={mockElementInstance} />
     );
 
-    act(() => fireEvent.click(getByLabelText("Required")));
+    act(() => {
+      fireEvent.click(getByLabelText("Required"));
+      fireEvent.blur(getByLabelText("Label"));
+    });
 
-    waitFor(() => {
-      expect(updateElement).toHaveBeenCalledWith(
+    await waitFor(() => {
+      expect(mockUpdateElement).toHaveBeenCalledWith(
         "1",
         expect.objectContaining({
           extraAttributes: expect.objectContaining({
