@@ -4,7 +4,8 @@ import {
   FormElementInstance,
   SubmitFunction,
 } from "@/components/builder/form-builder/FormElements";
-import { CustomInstance, DateFieldFormElement } from "./DateField";
+import { DateFieldFormElement } from "./DateField";
+import { CustomInstance } from "./attributes";
 import { Label } from "@/components/ui/label";
 import {
   Popover,
