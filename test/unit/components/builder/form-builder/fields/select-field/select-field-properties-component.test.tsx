@@ -3,18 +3,25 @@ import { render, fireEvent, act, waitFor } from "@testing-library/react";
 import SelectFieldPropertiesComponent from "@/components/builder/form-builder/fields/select-field/SelectFieldPropertiesComponent";
 import { CustomInstance } from "@/components/builder/form-builder/fields/select-field/attributes";
 import { FormElementInstance } from "@/components/builder/form-builder/FormElements";
-import useDesigner from "@/hooks/use-designer";
+import { toast } from "@/hooks/use-toast";
 
 // Mocking useDesigner hook
+const mockUpdateElement = jest.fn();
+const mockSetSelectedElement = jest.fn();
 jest.mock("@/hooks/use-designer", () => ({
   __esModule: true,
-  default: jest.fn(),
+  default: jest.fn(() => ({
+    updateElement: mockUpdateElement,
+    setSelectedElement: mockSetSelectedElement,
+  })),
+}));
+
+// Mock Toast
+jest.mock("@/hooks/use-toast", () => ({
+  toast: jest.fn(),
 }));
 
 describe("SelectFieldPropertiesComponent", () => {
-  const mockUpdateElement = jest.fn();
-  const mockSetSelectedElement = jest.fn();
-
   const mockElementInstance: FormElementInstance = {
     id: "1",
     extraAttributes: {
@@ -25,18 +32,6 @@ describe("SelectFieldPropertiesComponent", () => {
       options: ["Option 1", "Option 2"],
     },
   } as CustomInstance;
-
-  beforeEach(() => {
-    // Mock useDesigner implementation
-    (useDesigner as jest.Mock).mockReturnValue({
-      updateElement: mockUpdateElement,
-      setSelectedElement: mockSetSelectedElement,
-    });
-  });
-
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
 
   it("renders the form fields correctly", () => {
     const { getByLabelText } = render(
@@ -61,7 +56,7 @@ describe("SelectFieldPropertiesComponent", () => {
     expect(getByLabelText("Required")).not.toBeChecked();
   });
 
-  it("should update element attributes on form submission", () => {
+  it("should update element attributes on form submission", async () => {
     const { getByText, getByLabelText } = render(
       <SelectFieldPropertiesComponent elementInstance={mockElementInstance} />
     );
@@ -74,40 +69,40 @@ describe("SelectFieldPropertiesComponent", () => {
       fireEvent.change(getByLabelText("PlaceHolder"), {
         target: { value: "Updated Placeholder" },
       });
-      fireEvent.click(getByText("Save"));
     });
 
-    waitFor(() =>
+    act(() => fireEvent.click(getByText("Save")));
+
+    await waitFor(() => {
+      expect(mockUpdateElement).toHaveBeenCalled();
       expect(mockUpdateElement).toHaveBeenCalledWith(
         "1",
         expect.objectContaining({
           extraAttributes: expect.objectContaining({
             label: "Updated Label",
-            placeholer: "Updated PlaceHolder",
+            placeholder: "Updated Placeholder",
           }),
         })
-      )
-    );
+      );
+    });
   });
 
-  it("should display success toast on form submission", () => {
-    const toast = jest.fn();
-    jest.mock("@/hooks/use-toast", () => ({ toast }));
-
+  it("should display success toast on form submission", async () => {
     const { getByText } = render(
       <SelectFieldPropertiesComponent elementInstance={mockElementInstance} />
     );
 
     act(() => fireEvent.click(getByText("Save")));
 
-    waitFor(() =>
+    await waitFor(() => {
+      expect(mockUpdateElement).toHaveBeenCalled();
       expect(toast).toHaveBeenCalledWith(
         expect.objectContaining({
           title: "Success",
           description: "Properties saved successfully",
         })
-      )
-    );
+      );
+    });
   });
 
   it('should add a new option when "Add" button is clicked', () => {
