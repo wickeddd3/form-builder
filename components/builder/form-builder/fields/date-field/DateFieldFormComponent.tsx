@@ -4,7 +4,6 @@ import {
   FormElementInstance,
   SubmitFunction,
 } from "@/components/builder/form-builder/FormElements";
-import { DateFieldFormElement } from "./DateField";
 import { CustomInstance } from "./attributes";
 import { Label } from "@/components/ui/label";
 import {
@@ -18,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
+import { validate } from "./utils";
 
 function DateFieldFormComponent({
   elementInstance,
@@ -40,6 +40,15 @@ function DateFieldFormComponent({
   useEffect(() => {
     setError(isInvalid === true);
   }, [isInvalid]);
+
+  const handleDateSelect = (selectedDate: Date | undefined) => {
+    setDate(selectedDate);
+    if (!submitValue) return;
+    const value = selectedDate?.toUTCString() || "";
+    const valid = validate(element, value);
+    setError(!valid);
+    submitValue(element.id, value);
+  };
 
   return (
     <div className="flex flex-col gap-2 w-full">
@@ -65,14 +74,7 @@ function DateFieldFormComponent({
           <Calendar
             mode="single"
             selected={date}
-            onSelect={(date) => {
-              setDate(date);
-              if (!submitValue) return;
-              const value = date?.toUTCString() || "";
-              const valid = DateFieldFormElement.validate(element, value);
-              setError(!valid);
-              submitValue(element.id, value);
-            }}
+            onSelect={handleDateSelect}
             initialFocus
           />
         </PopoverContent>
