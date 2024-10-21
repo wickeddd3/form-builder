@@ -1,26 +1,20 @@
 import React from "react";
-import {
-  render,
-  screen,
-  fireEvent,
-  act,
-  waitFor,
-} from "@testing-library/react";
+import { render, fireEvent, act, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import TextareaFieldPropertiesComponent from "@/components/builder/form-builder/fields/textarea-field/TextareaFieldPropertiesComponent";
 import { FormElementInstance } from "@/components/builder/form-builder/FormElements";
 import { CustomInstance } from "@/components/builder/form-builder/fields/textarea-field/attributes";
-import useDesigner from "@/hooks/use-designer";
 
 // Mocking useDesigner hook
+const mockUpdateElement = jest.fn(); // Define the mock function
 jest.mock("@/hooks/use-designer", () => ({
   __esModule: true,
-  default: jest.fn(),
+  default: jest.fn(() => ({
+    updateElement: mockUpdateElement,
+  })),
 }));
 
 describe("TextareaFieldPropertiesComponent", () => {
-  const mockUpdateElement = jest.fn();
-
   const mockElementInstance: FormElementInstance = {
     id: "1",
     extraAttributes: {
@@ -31,17 +25,6 @@ describe("TextareaFieldPropertiesComponent", () => {
       rows: 3,
     },
   } as CustomInstance;
-
-  beforeEach(() => {
-    // Mock useDesigner implementation
-    (useDesigner as jest.Mock).mockReturnValue({
-      updateElement: mockUpdateElement,
-    });
-  });
-
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
 
   it("renders the form fields correctly", () => {
     const { getByLabelText } = render(
@@ -68,33 +51,35 @@ describe("TextareaFieldPropertiesComponent", () => {
     expect(getByLabelText("Required")).not.toBeChecked();
   });
 
-  it("calls updateElement on form blur", () => {
-    const { updateElement } = useDesigner();
-
-    render(
+  it("calls updateElement on form blur", async () => {
+    const { getByLabelText } = render(
       <TextareaFieldPropertiesComponent elementInstance={mockElementInstance} />
     );
 
-    const labelInput = screen.getByLabelText(/Label/i);
-
     act(() => {
-      fireEvent.change(labelInput, { target: { value: "New Label" } });
-      fireEvent.blur(labelInput);
+      fireEvent.change(getByLabelText("Label"), {
+        target: { value: "New Label" },
+      });
     });
 
-    waitFor(() =>
-      expect(updateElement).toHaveBeenCalledWith(
+    act(() => {
+      fireEvent.blur(getByLabelText("Label"));
+    });
+
+    await waitFor(() => {
+      expect(mockUpdateElement).toHaveBeenCalled();
+      expect(mockUpdateElement).toHaveBeenCalledWith(
         "1",
         expect.objectContaining({
           extraAttributes: expect.objectContaining({
             label: "New Label",
           }),
         })
-      )
-    );
+      );
+    });
   });
 
-  it("should blur input field on Enter key press", () => {
+  it("should blur input field on Enter key press", async () => {
     const { getByLabelText } = render(
       <TextareaFieldPropertiesComponent elementInstance={mockElementInstance} />
     );
@@ -104,24 +89,33 @@ describe("TextareaFieldPropertiesComponent", () => {
 
     act(() => fireEvent.keyDown(input, { key: "Enter" }));
 
-    waitFor(() => expect(document.activeElement).not.toBe(input));
+    await waitFor(() => expect(document.activeElement).not.toBe(input));
   });
 
-  it("updates the rows slider value correctly", () => {
-    render(
+  it("updates the rows slider value correctly", async () => {
+    const { getByRole, getByLabelText } = render(
       <TextareaFieldPropertiesComponent elementInstance={mockElementInstance} />
     );
 
     // Find the slider component using its ARIA role and label
-    const slider = screen.getByRole("slider", { name: /rows/i });
+    const slider = getByRole("slider", { name: /rows/i });
+    slider.focus();
 
     // Simulate moving the slider to increase the value
     act(() => {
-      fireEvent.keyDown(slider, { key: "ArrowRight", code: "ArrowRight" }); // Simulate increasing the value by 1
+      fireEvent.keyDown(slider, {
+        key: "ArrowRight",
+        code: "ArrowRight",
+      }); // Simulate increasing the value by 1
+    });
+
+    act(() => {
+      fireEvent.blur(getByLabelText("Label"));
     });
 
     // Verify that updateElement is called with the new rows value (rows + 1)
-    waitFor(() => {
+    await waitFor(() => {
+      expect(mockUpdateElement).toHaveBeenCalled();
       expect(mockUpdateElement).toHaveBeenCalledWith(
         "1",
         expect.objectContaining({
@@ -134,11 +128,17 @@ describe("TextareaFieldPropertiesComponent", () => {
 
     // Simulate moving the slider to decrease the value
     act(() => {
+      slider.focus();
       fireEvent.keyDown(slider, { key: "ArrowLeft", code: "ArrowLeft" }); // Simulate decreasing the value by 1
     });
 
+    act(() => {
+      fireEvent.blur(getByLabelText("Label"));
+    });
+
     // Verify that updateElement is called with the updated rows value (rows - 1)
-    waitFor(() => {
+    await waitFor(() => {
+      expect(mockUpdateElement).toHaveBeenCalled();
       expect(mockUpdateElement).toHaveBeenCalledWith(
         "1",
         expect.objectContaining({
