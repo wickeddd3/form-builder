@@ -50,16 +50,6 @@ function CheckboxFieldFormComponent({
         checked={value}
         className={cn(error && "border-red-500")}
         onCheckedChange={handleCheckedChange}
-        // onCheckedChange={(checked) => {
-        //   let value = false;
-        //   if (checked === true) value = true;
-        //   setValue(value);
-        //   if (!submitValue) return;
-        //   const stringValue = value ? "true" : "false";
-        //   const valid = CheckboxFieldFormElement.validate(element, stringValue);
-        //   setError(!valid);
-        //   submitValue(element.id, stringValue);
-        // }}
       />
       <div className="grid gap-1.5 leading-none">
         <Label htmlFor={id} className={cn(error && "text-red-500")}>
