@@ -51,6 +51,13 @@ function DateFieldPropertiesComponent({
     });
   }
 
+  const handleOnKeyDownEnter = (e: {
+    key: string;
+    currentTarget: { blur: () => void };
+  }) => {
+    if (e.key === "Enter") e.currentTarget.blur();
+  };
+
   return (
     <Form {...form}>
       <form
@@ -67,12 +74,7 @@ function DateFieldPropertiesComponent({
             <FormItem>
               <FormLabel>Label</FormLabel>
               <FormControl>
-                <Input
-                  {...field}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") e.currentTarget.blur();
-                  }}
-                />
+                <Input {...field} onKeyDown={handleOnKeyDownEnter} />
               </FormControl>
               <FormDescription>
                 The label of the field. <br /> It will be displayed above the
@@ -88,12 +90,7 @@ function DateFieldPropertiesComponent({
             <FormItem>
               <FormLabel>Helper text</FormLabel>
               <FormControl>
-                <Input
-                  {...field}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") e.currentTarget.blur();
-                  }}
-                />
+                <Input {...field} onKeyDown={handleOnKeyDownEnter} />
               </FormControl>
               <FormDescription>
                 The helper text of the field. <br />
