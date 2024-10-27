@@ -9,8 +9,11 @@
     "lint": "next lint",
     "lintfix": "eslint --fix ./**/* --ext .ts,tsx,.js,.jsx --format stylish",
     "postinstall": "prisma generate",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test:unit": "jest",
+    "test:unit-watch": "jest --watch",
+    "test:e2e": "yarn playwright test",
+    "test:e2e-ui": "yarn playwright test --ui",
+    "test:e2e-report": "yarn playwright show-report"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.6.0",
